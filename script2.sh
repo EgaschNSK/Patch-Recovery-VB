@@ -3,7 +3,7 @@
 mkdir unpack
 cd unpack
 ../magiskboot unpack ../vendor_boot.img
-../magiskboot cpio vendor_ramdisk_recovery.cpio extract
+../magiskboot cpio recovery.cpio extract
 # Reverse fastbootd ENG mode check
 ../magiskboot hexpatch system/bin/recovery e10313aaf40300aa6ecc009420010034 e10313aaf40300aa6ecc0094 # 20 01 00 35
 ../magiskboot hexpatch system/bin/recovery eec3009420010034 eec3009420010035
@@ -21,6 +21,6 @@ cd unpack
 ../magiskboot hexpatch system/bin/recovery 9ef00ced28b1701c 9ef00ced28b9701c
 ../magiskboot hexpatch system/bin/recovery 2001597ae0000054 2001597ae1000054  # ccmp w9, w25, #0, eq ; b.e #0x20 ===> b.ne #0x20
 ../magiskboot hexpatch system/bin/recovery 2001597ac0000054 2001597ac1000054
-../magiskboot cpio vendor_ramdisk_recovery.cpio 'add 0755 system/bin/recovery system/bin/recovery'
+../magiskboot cpio recovery.cpio 'add 0755 system/bin/recovery system/bin/recovery'
 ../magiskboot repack ../vendor_boot.img new-boot.img
 cp new-boot.img ../vendor_boot-patched.img
